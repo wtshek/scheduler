@@ -9,14 +9,14 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { DateType, StaffType } from "@/utils/types";
+import { DateType, DutyType, StaffType } from "@/utils/types";
 
 type LoadTableProps = {
   dates: DateType[];
   staffs: StaffType;
 };
 
-const calculateTotal = (shifts: string[][]) =>
+const calculateTotal = (shifts: DutyType[][]) =>
   shifts.reduce((sum, curr) => (sum += curr.length), 0);
 
 export const LoadTable: FC<LoadTableProps> = ({ dates, staffs }) => {

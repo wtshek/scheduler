@@ -32,10 +32,8 @@ export const ScheduleTable: FC<ScheduleTableProps> = ({
   shifts,
   onSelect,
 }) => {
-  const onStaffSelect =
-    (dutyId: string, dateId: string) => (staffId: string) => {
-      onSelect(dutyId, dateId, staffId);
-    };
+  const onStaffSelect = (dutyId: string, dateId: string) => (staffId: string) =>
+    onSelect(dutyId, dateId, staffId);
 
   return (
     <div className="w-full">
@@ -59,23 +57,24 @@ export const ScheduleTable: FC<ScheduleTableProps> = ({
                 <TableCell key={`${duty}-${date.id}-cell`}>
                   <Select onValueChange={onStaffSelect(duty.id, date.id)}>
                     <SelectTrigger>
-                      <SelectValue
-                        placeholder={
-                          shifts?.[`${date.id}-${duty.id}`].staffName
-                        }
-                      />
+                      {shifts?.[`${date.id}-${duty.id}`].staffName && (
+                        <SelectValue
+                          placeholder={
+                            shifts?.[`${date.id}-${duty.id}`].staffName
+                          }
+                        />
+                      )}
                     </SelectTrigger>
                     <SelectContent className="bg-white">
-                      {staffs &&
-                        Object.values(staffs)?.map((staff) => (
-                          <SelectItem
-                            className="hover:bg-gray-400"
-                            value={staff.id}
-                            key={`${date.id}-${duty.id}-${staff.id}`}
-                          >
-                            {staff.name}
-                          </SelectItem>
-                        ))}
+                      {Object.values(staffs)?.map((staff) => (
+                        <SelectItem
+                          className="hover:bg-gray-400"
+                          value={staff.id}
+                          key={`${date.id}-${duty.id}-${staff.id}`}
+                        >
+                          {staff.name}
+                        </SelectItem>
+                      ))}
                     </SelectContent>
                   </Select>
                 </TableCell>
