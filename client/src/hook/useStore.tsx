@@ -1,40 +1,23 @@
 //
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
-import { mockDate, mockDuties, mockShifts, mockStaffs } from "@/utils/mockData";
-import { DutyType, DateType, ShiftType, StaffType } from "@/utils/types";
+import {
+  dates,
+  duties,
+  shifts as shiftsConfig,
+  staffs as staffsConfig,
+} from "@/utils/config";
+import { ShiftType, StaffType } from "@/utils/types";
 import { useAlertContext } from "./useAlertContext";
 
 const MAX_SHIFT_PER_DAY = 2;
 const MAX_SHIFT_PER_WEEK = 7;
 
 export const useStore = () => {
-  const [dates, setDates] = useState<DateType[]>();
-  const [shifts, setShifts] = useState<ShiftType>();
-  const [staffs, setStaffs] = useState<StaffType>();
-  const [duties, setDuties] = useState<DutyType[]>();
+  const [shifts, setShifts] = useState<ShiftType>(shiftsConfig);
+  const [staffs, setStaffs] = useState<StaffType>(staffsConfig);
   const { setMessage, toggleAlert } = useAlertContext();
-
-  useEffect(() => {
-    const fetchData = async () => {
-      /**
-       * data: duties/ shift, staffs, dates, date-shift
-       * what about if it is not empty?
-       */
-
-      // TODO: fetching
-
-      // return { shifts: shifts, dates: dates, staff: staffs };
-
-      setDates(mockDate);
-      setShifts(mockShifts);
-      setStaffs(mockStaffs);
-      setDuties(mockDuties);
-    };
-
-    fetchData();
-  }, []);
 
   const showAlert = (message: string) => {
     toggleAlert();

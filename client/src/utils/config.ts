@@ -1,6 +1,6 @@
 import { DutyType } from "./types";
 
-export const mockDate = [
+export const dates = [
   { id: "date1", label: "Monday" },
   { id: "date2", label: "Tuesday" },
   { id: "date3", label: "Wednesday" },
@@ -8,7 +8,7 @@ export const mockDate = [
   { id: "date5", label: "Friday" },
 ];
 
-export const mockDuties: DutyType[] = [
+export const duties: DutyType[] = [
   {
     id: "morning-up-stairs",
     shiftTime: "morning",
@@ -51,7 +51,7 @@ export const mockDuties: DutyType[] = [
   },
 ];
 
-export const mockShifts = {
+export const shifts = {
   "date1-morning-up-stairs": {
     dutyId: "morning-up-stairs",
     dutyLabel: "Morning UpStairs",
@@ -353,7 +353,7 @@ export const mockShifts = {
     dateLabel: "Friday",
   },
 };
-export const mockStaffs = {
+export const staffs = {
   staff1: { name: "X1", id: "staff1", shifts: {}, totalShifts: 0 },
   staff2: { name: "X2", id: "staff2", shifts: {}, totalShifts: 0 },
   staff3: { name: "X3", id: "staff3", shifts: {}, totalShifts: 0 },
